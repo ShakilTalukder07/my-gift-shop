@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaEnvelope, FaFacebook, FaInstagram, FaMapMarkerAlt, FaPhone, FaTwitter } from 'react-icons/fa';
 
 const Footer = () => {
+    
     return (
         <footer>
             <div className='py-7 px-5 bg-[#ECACAB] text-black'>

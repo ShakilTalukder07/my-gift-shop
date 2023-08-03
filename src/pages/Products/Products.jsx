@@ -19,13 +19,16 @@ const Products = () => {
     // }
 
     return (
-        <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-4 my-[90px] ml-10">
-            {
-                products.map(product => <Product
-                    key={product.id}
-                    product={product}
-                ></Product>)
-            }
+        <div>
+            {/* <h2 className='text-3xl flex justify-center items-center mt-5'>Our Products</h2> */}
+            <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-4 my-[40px] ml-5">
+                {
+                    products.map(product => <Product
+                        key={product.id}
+                        product={product}
+                    ></Product>)
+                }
+            </div>
         </div>
     );
 };

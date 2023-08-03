@@ -7,6 +7,8 @@ import Main from "../Layout/Main";
 import ErrorElement from "../components/ErrorElement/ErrorElement";
 import SignUp from "../pages/SignUp/SignUp";
 import SignIn from "../pages/SignIn/SignIn";
+import ProductLayout from "../Layout/ProductLayout";
+import Categories from "../pages/categories/Categories";
 
 
 
@@ -39,6 +41,24 @@ const router = createBrowserRouter([
             {
                 path: "/signIn",
                 element: <SignIn></SignIn>,
+            }
+        ]
+    },
+    {
+        path: "/products",
+        element: <ProductLayout></ProductLayout>,
+        errorElement: <ErrorElement></ErrorElement>,
+        children: [
+            {
+                path: "/products",
+                element: <Products></Products>,
+                // loader: fetch("https://gift-shop-server.vercel.app/products")
+            },
+            {
+                path: "/products/category/:id",
+                element: <Categories></Categories>,
+                loader: ({ params }) =>
+                    fetch(`https://gift-shop-server.vercel.app/category/${params.id}`)
             }
         ]
     }

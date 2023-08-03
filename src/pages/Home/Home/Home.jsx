@@ -1,8 +1,8 @@
 import React from 'react';
-import Banner from '../Banner/Banner';
 import ItemBanner from '../ItemBanner/ItemBanner';
 import OrderSystem from '../orderSystem/OrderSystem';
 import Testimonial from '../testimonial/Testimonial';
+import Banner from '../Banner/Banner';
 
 const Home = () => {
     return (

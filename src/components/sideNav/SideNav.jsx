@@ -14,14 +14,17 @@ const SideNav = () => {
     // console.log(categories);
 
     return (
-        <div className='mx-10'>
-            <h1 className="text-2xl my-7 underline">Category</h1>
+        <div className='mx-5 mt-[40px]'>
+            {/* <h1 className="text-2xl my-7 underline">Category</h1> */}
             <div className="bg-orange-100 p-3 h-120">
-                {categories.map((category) => (
+                {
+                categories.map((category) => (
                     <Category
                         key={category?.id}
-                        category={category} />
-                ))}
+                        category={category}
+                    />
+                ))
+                }
             </div>
         </div>
     );
