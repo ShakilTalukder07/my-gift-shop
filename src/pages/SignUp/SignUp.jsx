@@ -1,13 +1,25 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
-import eipLogo from '../../assets/logo4.gif'
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthProvider";
 
 
 const SignUp = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const [error, setError] = useState("")
+    const { createUser, updateUser, googleLogin, githubLogin } = useContext(AuthContext)
     const [signUpError, setSignUpError] = useState('');
+    const [createUserEmail, setCreateUserEmail] = useState('')
+    // const [token] = useToken(createUserEmail);
+    const location = useLocation();
+    const navigate = useNavigate()
+
+    // if (token) {
+    //     navigate('/')
+    // }
+
+    const from = location.state?.from?.pathname || '/'
 
     const handleSignUp = data => {
         console.log(data);
@@ -23,6 +35,7 @@ const SignUp = () => {
                 updateUser(userInfo)
                     .then(() => {
                         saveUser(data.name, data.email, data.role)
+                        navigate('/')
                     })
                     .catch(error => console.error(error))
             })
@@ -60,11 +73,11 @@ const SignUp = () => {
                         })} className="input input-bordered w-full max-w-xs" type="password" placeholder="Password" />
                         {errors.password && <p className='text-red-600'>{errors.password.message}</p>}
                     </div>
-                    <input className='bg-[#ECACAB] text-white w-full mt-4 py-2 rounded-lg' value="Sign Up" type="submit" />
+                    <input className='btn bg-[#ECACAB] hover:bg-[#f5b5b4] text-white w-full mt-4 py-2 rounded-lg' value="Sign Up" type="submit" />
                     {signUpError && <p className='text-red-600'> {signUpError}</p>}
                 </form>
                 <div>
-                    <button className="bg-[#1D1D1D] text-white w-full mt-4 py-2 rounded-lg">Sign In with Google</button>
+                    <button className="btn bg-[#1D1D1D] hover:bg-[#050505] text-white w-full mt-4 py-2 rounded-lg">Sign In with Google</button>
                 </div>
                 <p className='mt-2 text-white'>Already have an account?<Link to='/signIn' className='text-black'> Please Sign In</Link></p>
             </div>

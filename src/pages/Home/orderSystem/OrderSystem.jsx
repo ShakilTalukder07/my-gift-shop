@@ -6,7 +6,7 @@ import person from '../../../assets/person1.png';
 const OrderSystem = () => {
     return (
         <div>
-            <div className='flex justify-evenly py-5'>
+            <div className='flex justify-evenly py-5 mx-auto'>
                 <img className='h-40 w-40' src={box4} alt="" />
                 <div className='text-center'>
                     <h3 className='text-2xl mb-5 font-semibold'>Order Now</h3>
@@ -15,7 +15,7 @@ const OrderSystem = () => {
                         Beautifully share your emotions with our garden flowers.
                     </p>
                 </div>
-                <img className='h-40 w-40' src={box5} alt="" />
+                <img className='h-32 md:h-32 lg:h-40 w-32 md:w-32 lg:w-40' src={box5} alt="" />
             </div>
             <div className="hero bg-white text-black py-[50px]">
                 <div className="hero-content flex-col lg:flex-row">
