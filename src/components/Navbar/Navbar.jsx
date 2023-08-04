@@ -1,8 +1,20 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { AiOutlineUser, AiOutlineShoppingCart, AiOutlineSearch } from 'react-icons/ai'
+import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { AiOutlineUser, AiOutlineShoppingCart } from 'react-icons/ai'
+import { AuthContext } from '../../Context/AuthProvider';
 
 const Navbar = () => {
+
+    const { user, logOut } = useContext(AuthContext)
+    const navigate = useNavigate()
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+        navigate('/')
+            .catch(error => console.error(error))
+    }
+
     return (
         <div className="navbar bg-[#E1A2A1]">
             <div className="navbar-start">
@@ -40,7 +52,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <input type="text" placeholder="Search product" className="p-1 rounded-2xl hidden md:block lg:block" />
+                <input type="text" placeholder=" Search product" className="p-1 rounded-2xl hidden md:block lg:block" />
                 <ul className="menu menu-horizontal px-1">
                     <li tabIndex={0}>
                         <details>
