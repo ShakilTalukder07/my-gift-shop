@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { AiOutlineUser, AiOutlineShoppingCart, AiOutlineSearch } from 'react-icons/ai'
 
 const Navbar = () => {
     return (
@@ -30,7 +31,7 @@ const Navbar = () => {
                     <li tabIndex={0}>
                         <details>
                             <summary>Pages</summary>
-                            <ul className="p-2">
+                            <ul className="w-28">
                                 <li><Link to="/about">About US</Link></li>
                                 <li><Link to="/contact">Contact</Link></li>
                             </ul>
@@ -39,8 +40,24 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <input type="text" placeholder="Search" className="input input-bordered hidden md:block lg:block" />
-                <Link to="/signIn" className='bg-white text-black px-3 py-2 mx-3 rounded-3xl'>LogIn</Link>
+                <input type="text" placeholder="Search" className="p-1 rounded-2xl hidden md:block lg:block" />
+                <ul className="menu menu-horizontal px-1">
+                    <li tabIndex={0}>
+                        <details>
+                            <summary className='text-sm'><span><AiOutlineUser className='w-4 h-4'></AiOutlineUser></span>Account</summary>
+                            <ul className="w-28">
+                                <li>
+                                    <Link to="/signIn" className='bg-white text-black px-3 py-2 mx-3 rounded-3xl'>LogIn</Link>
+                                </li>
+                            </ul>
+                        </details>
+                    </li>
+                    <li>
+                        <Link to="/cart" className='flex justify-center items-center gap-2'>
+                            <span><AiOutlineShoppingCart></AiOutlineShoppingCart></span>Cart
+                        </Link>
+                    </li>
+                </ul>
             </div>
         </div>
 

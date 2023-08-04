@@ -9,6 +9,7 @@ import SignUp from "../pages/SignUp/SignUp";
 import SignIn from "../pages/SignIn/SignIn";
 import ProductLayout from "../Layout/ProductLayout";
 import Categories from "../pages/categories/Categories";
+import Cart from "../Shared/Cart/Cart";
 
 
 
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
             {
                 path: '/products',
                 element: <Products></Products>,
+            },
+            {
+                path: '/cart',
+                element: <Cart></Cart>,
             },
             {
                 path: '/signUp',
