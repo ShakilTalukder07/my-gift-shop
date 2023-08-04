@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AiOutlineUser, AiOutlineShoppingCart } from 'react-icons/ai'
+import { VscAccount } from 'react-icons/vsc'
+import { RxExit } from 'react-icons/rx'
 import { AuthContext } from '../../Context/AuthProvider';
 
 const Navbar = () => {
@@ -15,6 +17,8 @@ const Navbar = () => {
             .catch(error => console.error(error))
     }
 
+    console.log(user?.uid)
+
     return (
         <div className="navbar bg-[#E1A2A1]">
             <div className="navbar-start">
@@ -27,7 +31,7 @@ const Navbar = () => {
                         <li><Link to="/products">Products</Link></li>
                         <li>
                             <a>Pages</a>
-                            <ul className="p-2">
+                            <ul className="p-2 z-10">
                                 <li><Link to="/about">About US</Link></li>
                                 <li><Link to="/contact">Contact</Link></li>
                             </ul>
@@ -43,7 +47,7 @@ const Navbar = () => {
                     <li tabIndex={0}>
                         <details>
                             <summary>Pages</summary>
-                            <ul className="w-28">
+                            <ul className="w-28 z-10">
                                 <li><Link to="/about">About US</Link></li>
                                 <li><Link to="/contact">Contact</Link></li>
                             </ul>
@@ -56,11 +60,23 @@ const Navbar = () => {
                 <ul className="menu menu-horizontal px-1">
                     <li tabIndex={0}>
                         <details>
-                            <summary className='text-sm'><span><AiOutlineUser className='w-4 h-4'></AiOutlineUser></span>Account</summary>
-                            <ul className="w-28">
-                                <li>
-                                    <Link to="/signIn" className='bg-white text-black px-3 py-2 mx-3 rounded-3xl'>LogIn</Link>
-                                </li>
+                            <summary className='text-sm'><span><VscAccount className='w-4 h-4'></VscAccount></span>Account</summary>
+                            <ul className="w-28 z-10">
+                                {
+                                    user?.uid ?
+                                        <>
+                                            <li>
+                                                <Link to="/profile" className='bg-white text-black p-1 rounded-3xl'><AiOutlineUser></AiOutlineUser> Profile</Link>
+                                            </li>
+                                            <li>
+                                                <button onClick={handleLogOut} className='bg-white text-black p-1 rounded-3xl'><RxExit></RxExit> Sign Out
+                                                </button>
+                                            </li>
+                                        </> :
+                                        <li>
+                                            <Link to="/signIn" className='bg-white text-black p-1 rounded-3xl'>Sign In</Link>
+                                        </li>
+                                }
                             </ul>
                         </details>
                     </li>

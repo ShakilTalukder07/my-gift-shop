@@ -29,6 +29,7 @@ const SignIn = () => {
                 const user = result.user;
                 console.log(user);
                 setLoginUserEmail(data.email);
+                navigate('/')
             })
             .catch(error => setLoginError(error.message))
     }
@@ -62,7 +63,7 @@ const SignIn = () => {
                         {errors.password && <p className='text-red-600'>{errors.password.message}</p>}
                     </div>
                     <input className='bg-[#ECACAB] hover:bg-[#f5b5b4] text-white w-full mt-4 py-2 rounded-lg' value="Sign In" type="submit" />
-                    {signUpError && <p className='text-red-600'> {signUpError}</p>}
+                    {loginError && <p className='text-red-600'> {signUpError}</p>}
                 </form>
                 <div>
                     <button className="bg-[#1D1D1D] hover:bg-[#050505] text-white w-full mt-4 py-2 rounded-lg">Sign In with Google</button>

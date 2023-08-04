@@ -10,6 +10,7 @@ import SignIn from "../pages/SignIn/SignIn";
 import ProductLayout from "../Layout/ProductLayout";
 import Categories from "../pages/categories/Categories";
 import Cart from "../Shared/Cart/Cart";
+import Profile from "../pages/Profile/Profile";
 
 
 
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
             {
                 path: '/products',
                 element: <Products></Products>,
+            },
+            {
+                path: '/profile',
+                element: <Profile></Profile>,
             },
             {
                 path: '/cart',
