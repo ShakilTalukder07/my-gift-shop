@@ -40,7 +40,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <input type="text" placeholder="Search" className="p-1 rounded-2xl hidden md:block lg:block" />
+                <input type="text" placeholder="Search product" className="p-1 rounded-2xl hidden md:block lg:block" />
                 <ul className="menu menu-horizontal px-1">
                     <li tabIndex={0}>
                         <details>

@@ -9,17 +9,29 @@ const SignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [signUpError, setSignUpError] = useState('');
 
-    const handleSignUp = (data) => {
+    const handleSignUp = data => {
         console.log(data);
-        setSignUpError("")
-
-
+        setSignUpError('');
+        createUser(data.email, data.password, data.role)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                toast('User Created Successfully');
+                const userInfo = {
+                    displayName: data.name
+                }
+                updateUser(userInfo)
+                    .then(() => {
+                        saveUser(data.name, data.email, data.role)
+                    })
+                    .catch(error => console.error(error))
+            })
+            .catch(error => setSignUpError(error))
     }
 
     return (
-        <div className='h-[500px] flex justify-center items-center mt-4 mb-10'>
+        <div className='h-[550px] flex justify-center items-center mt-4 mb-10'>
             <div className='w-96 p-7 shadow-2xl bg-[#E1A2A1] rounded-lg'>
-                {/* <img className="w-20 h-20 absolute left-[585px] top-32" src={eipLogo} alt="" /> */}
                 <h2 className='text-2xl text-center font-bold text-white mt-10 mb-6'>Sign Up</h2>
                 <form onSubmit={handleSubmit(handleSignUp)}>
                     <div className="form-control w-full max-w-xs">
@@ -28,6 +40,12 @@ const SignUp = () => {
                         })} className="input input-bordered w-full max-w-xs mb-4" type="text" placeholder="Name" />
                         {errors.name && <p className='text-red-600'>{errors.name.message}</p>}
                     </div>
+                    <select className="select select-bordered w-full max-w-xs mb-4"
+                        {...register('role', { required: 'role is required' })}
+                    >
+                        <option value='buyer' >Buyer</option>
+                        <option value='seller'>Seller</option>
+                    </select>
                     <div className="form-control w-full max-w-xs">
                         <input {...register("email", {
                             required: 'Email is required'
@@ -48,7 +66,7 @@ const SignUp = () => {
                 <div>
                     <button className="bg-[#1D1D1D] text-white w-full mt-4 py-2 rounded-lg">Sign In with Google</button>
                 </div>
-                <p className='mt-2 text-white'>Already have an account?<Link to='/signIn' className='text-black'> Please Sign Up</Link></p>
+                <p className='mt-2 text-white'>Already have an account?<Link to='/signIn' className='text-black'> Please Sign In</Link></p>
             </div>
         </div>
     );

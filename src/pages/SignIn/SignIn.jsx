@@ -49,7 +49,7 @@ const SignIn = () => {
                 <div>
                     <button className="bg-[#1D1D1D] text-white w-full mt-4 py-2 rounded-lg">Sign In with Google</button>
                 </div>
-                <p className='mt-2 text-white'>Already have an account?<Link to='/signUp' className='text-black'> Please Sign In</Link></p>
+                <p className='mt-2 text-white'>Have not an account?<Link to='/signUp' className='text-black'> Please Sign Up</Link></p>
             </div>
         </div>
     );
