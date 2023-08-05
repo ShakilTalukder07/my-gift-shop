@@ -22,7 +22,7 @@ const ItemBanner = () => {
                         <h2 className='text-3xl font-semibold text-center mb-4'>Desire Gifts</h2>
                         <h1 className="text-5xl font-bold">From Our Hand to Your Table</h1>
                         <p className="py-6">Flowers are carefully selected and handpicked by expert florists to bring smile and happiness.</p>
-                        <Link className="bg-black text-white font-semibold px-8 py-4">SHOP NOW</Link>
+                        <Link to='/products' className="bg-black text-white font-semibold px-8 py-4">SHOP NOW</Link>
                     </div>
                 </div>
             </div>

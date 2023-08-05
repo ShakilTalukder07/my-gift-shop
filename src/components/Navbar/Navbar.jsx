@@ -17,7 +17,7 @@ const Navbar = () => {
             .catch(error => console.error(error))
     }
 
-    console.log(user?.uid)
+    // console.log(user)
 
     return (
         <div className="navbar bg-[#E1A2A1]">

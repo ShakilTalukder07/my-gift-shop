@@ -8,7 +8,7 @@ const SignUp = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [error, setError] = useState("")
-    const { createUser, updateUser, googleLogin, githubLogin } = useContext(AuthContext)
+    const { createUser, updateUser, googleLogin } = useContext(AuthContext)
     const [signUpError, setSignUpError] = useState('');
     const [createUserEmail, setCreateUserEmail] = useState('')
     // const [token] = useToken(createUserEmail);
@@ -24,7 +24,7 @@ const SignUp = () => {
     const handleSignUp = data => {
         console.log(data);
         setSignUpError('');
-        createUser(data.email, data.password, data.role)
+        createUser(data.name, data.email, data.password, data.role)
             .then(result => {
                 const user = result.user;
                 console.log(user);

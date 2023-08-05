@@ -11,6 +11,7 @@ import ProductLayout from "../Layout/ProductLayout";
 import Categories from "../pages/categories/Categories";
 import Cart from "../Shared/Cart/Cart";
 import Profile from "../pages/Profile/Profile";
+import ProductDetails from "../pages/Products/ProductDetails";
 
 
 
@@ -35,6 +36,11 @@ const router = createBrowserRouter([
             {
                 path: '/products',
                 element: <Products></Products>,
+            },
+            {
+                path: '/products/:id',
+                element: <ProductDetails></ProductDetails>,
+                loader: ({ params }) => fetch(`https://gift-shop-server.vercel.app/products/${params.id}`)
             },
             {
                 path: '/profile',
